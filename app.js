@@ -1,3 +1,25 @@
+const slideShowImages = document.querySelectorAll(".intro .slideshow-img");
+const nextImageDelay = 6000;
+let currentImageCounter = 0;
+
+// slideShowImages[currentImageCounter].style.display = "block";
+slideShowImages[currentImageCounter].style.opacity = 1;
+setInterval(nextImage, nextImageDelay);
+
+function nextImage() {
+    // slideShowImages[currentImageCounter].style.display = "none";
+    // slideShowImages[currentImageCounter].style.opacity = 0;
+    slideShowImages[currentImageCounter].style.zIndex = -2;
+    const tempCounter = currentImageCounter;
+    setTimeout(() => {
+        slideShowImages[tempCounter].style.opacity = 0;
+    });
+    currentImageCounter = (currentImageCounter + 1) % slideShowImages.length;
+    // slideShowImages[currentImageCounter].style.display = "block";
+    slideShowImages[currentImageCounter].style.opacity = 1;
+    slideShowImages[currentImageCounter].style.zIndex = -1;
+}
+
 const typedTextSpan = document.querySelector(".typed-text");
 const cursorSpan = document.querySelector(".cursor");
 const textArray = ["Surabaya", "Bali", "Wonosobo", "Raja Ampat", "And More"];
